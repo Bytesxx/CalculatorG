@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body {
+        background-color: #444444;
+      }
+
+      .calculator {
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2px;
+        max-width: 300px;
+        padding: 10px;
+        border: 2px solid gray;
+        border-radius: 10px;
+        background-color: #999999;
+      }
+
+      .calculator input[type="text"] {
+        grid-column: 1 / -1;
+        height: 50px;
+        font-size: 24px;
+        text-align: right;
+        padding-right: 5px;
+        margin-bottom: 5px;
+        background-color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .calculator button {
+        height: 60px;
+        font-size: 24px;
+        background-color: #cccccc;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 2px 2px #888888;
+      }
+
+      .calculator button:hover {
+        background-color: #dddddd;
+      }
+
+      .calculator button:active {
+        background-color: #bbbbbb;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="result" disabled>
+      <button onclick="buttonClick('7')">7</button>
+      <button onclick="buttonClick('8')">8</button>
+      <button onclick="buttonClick('9')">9</button>
+      <button onclick="buttonClick('/')">/</button>
+      <button onclick="buttonClick('4')">4</button>
+      <button onclick="buttonClick('5')">5</button>
+      <button onclick="buttonClick('6')">6</button>
+      <button onclick="buttonClick('*')">*</button>
+      <button onclick="buttonClick('1')">1</button>
+      <button onclick="buttonClick('2')">2</button>
+      <button onclick="buttonClick('3')">3</button>
+      <button onclick="buttonClick('-')">-</button>
+      <button onclick="buttonClick('0')">0</button>
+      <button onclick="buttonClick('.')">.</button>
+      <button onclick="buttonClick('+')">+</button>
+      <button id="equals" onclick="checkCode()">=</button>
+    </div>
+
+    <script>
+      function buttonClick(value) {
+        document.getElementById("result").value += value;
+      }
+
+      function checkCode() {
+        var result = document.getElementById("result").value;
+        if (result) {
+          var code = result.slice(-4);
+          if (code === "3670") {
+            window.location.href = "secret.html";
+          } else {
+            document.getElementById("result").value = eval(result);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
